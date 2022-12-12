@@ -1,0 +1,5 @@
+GET localhost:8080/posts
+
+###
+
+GET localhost:8080/users/2

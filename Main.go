@@ -1,18 +1,16 @@
 package main
 
+import "C"
 import (
-	"fmt"
-	"web1/internal/core"
+	"github.com/spf13/viper"
+	"log"
 )
 
 func main() {
-	fmt.Println("hello")
-	user := &core.User{
-		Id:          1,
-		Name:        "Ivan",
-		Age:         20,
-		NumberPhone: "1234",
+	viper.SetConfigFile(".env")
+	err := viper.ReadInConfig()
+	if err != nil {
+		log.Panic(err)
 	}
-	user.ChangeNumber("+7238462")
-	user.PrintInfo()
+	println(viper.Get("PORT").(string))
 }

@@ -9,7 +9,10 @@ type User struct {
 	Id          int
 	Name        string
 	Age         int
+	Login       string
+	Password    string
 	NumberPhone string
+	Posts       []*Post
 }
 
 func (user *User) ChangeNumber(newNumber string) {
