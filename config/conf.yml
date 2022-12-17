@@ -1,0 +1,10 @@
+http:
+  port:
+    8080
+mongo:
+  database:
+    name:
+      socialDB
+    uri:
+      mongodb://localhost:27017
+
