@@ -6,10 +6,10 @@ import (
 )
 
 type PostService struct {
-	postRepository *memory.PostRepository
+	postRepository memory.PostRepository
 }
 
-func NewPostService(repository *memory.PostRepository) *PostService {
+func NewPostService(repository memory.PostRepository) *PostService {
 	service := &PostService{postRepository: repository}
 	return service
 }

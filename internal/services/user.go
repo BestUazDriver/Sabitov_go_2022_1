@@ -6,10 +6,10 @@ import (
 )
 
 type UserService struct {
-	userRepository *memory.UserRepository
+	userRepository memory.UserRepository
 }
 
-func NewUserService(userRepository *memory.UserRepository) *UserService {
+func NewUserService(userRepository memory.UserRepository) *UserService {
 	userService := &UserService{userRepository: userRepository}
 	return userService
 }

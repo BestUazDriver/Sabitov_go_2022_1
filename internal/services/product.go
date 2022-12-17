@@ -6,8 +6,8 @@ import (
 )
 
 type ProductRepository interface {
-	GetAll(ctx context.Context) ([]*core.Product, error)
-	GetById(ctx context.Context, id string) (*core.Product, error)
+	FindAll(ctx context.Context) ([]*core.Product, error)
+	FindById(ctx context.Context, id string) (*core.Product, error)
 	Save(ctx context.Context, product *core.Product) (*core.Product, error)
 }
 
@@ -20,11 +20,11 @@ func NewProductService(productRepository ProductRepository) *ProductService {
 }
 
 func (service *ProductService) GetAll(ctx context.Context) ([]*core.Product, error) {
-	return service.productRepository.GetAll(ctx)
+	return service.productRepository.FindAll(ctx)
 }
 
 func (service *ProductService) GetById(ctx context.Context, id string) (*core.Product, error) {
-	return service.productRepository.GetById(ctx, id)
+	return service.productRepository.FindById(ctx, id)
 }
 
 func (service *ProductService) AddProduct(ctx context.Context, product *core.Product) (*core.Product, error) {

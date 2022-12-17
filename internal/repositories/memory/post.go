@@ -11,13 +11,13 @@ import (
 
 type PostRepository struct {
 	posts          []*core.Post
-	userRepository *UserRepository
+	userRepository UserRepository
 }
 
-func NewPostRepository(path string, usersRepository *UserRepository) *PostRepository {
+func NewPostRepository(path string, usersRepository UserRepository) *PostRepository {
 	repository := &PostRepository{posts: []*core.Post{}}
 	repository.userRepository = usersRepository
-	posts := parsePosts(path, usersRepository)
+	posts := parsePosts(path, &usersRepository)
 	for i := 0; i < len(posts); i++ {
 		repository.posts = append(repository.posts, posts[i])
 	}
