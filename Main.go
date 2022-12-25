@@ -1,16 +1,17 @@
 package main
 
-import "C"
 import (
-	"github.com/spf13/viper"
-	"log"
+	"fmt"
+	"os"
 )
 
 func main() {
-	viper.SetConfigFile(".env")
-	err := viper.ReadInConfig()
+	data := []byte("Hello Bold!")
+	file, err := os.OpenFile("hello.bin", os.O_RDWR, 0666)
 	if err != nil {
-		log.Panic(err)
+		fmt.Println("Unable to create file:", err)
+		os.Exit(1)
 	}
-	println(viper.Get("PORT").(string))
+	defer file.Close()
+	file.Write(data)
 }

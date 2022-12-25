@@ -17,3 +17,8 @@ func NewPostService(repository *memory.PostRepository) *PostService {
 func (postService *PostService) GetPosts() []*core.Post {
 	return postService.postRepository.GetAll()
 }
+
+func (postService *PostService) AddPost(post *core.Post) *core.Post {
+	postService.postRepository.AddPost(post)
+	return post
+}

@@ -12,11 +12,13 @@ import (
 type PostRepository struct {
 	posts          []*core.Post
 	userRepository *UserRepository
+	path           string
 }
 
 func NewPostRepository(path string, usersRepository *UserRepository) *PostRepository {
 	repository := &PostRepository{posts: []*core.Post{}}
 	repository.userRepository = usersRepository
+	repository.path = path
 	posts := parsePosts(path, usersRepository)
 	for i := 0; i < len(posts); i++ {
 		repository.posts = append(repository.posts, posts[i])
@@ -59,4 +61,20 @@ func parsePosts(path string, userRepository *UserRepository) []*core.Post {
 
 func (postRepository *PostRepository) GetAll() []*core.Post {
 	return postRepository.posts
+}
+
+func (postRepository *PostRepository) AddPost(post *core.Post) {
+	file, err := os.OpenFile(postRepository.path, os.O_RDWR, 0666)
+	println(post.Owner.Name)
+	if err != nil {
+		panic("Problems with os.OpenFile()")
+	}
+	text := strconv.Itoa(post.Id) + ", " + strconv.Itoa(post.Likes) + ", " + strconv.Itoa(post.Owner.Id) + ", " + post.Content
+	println(text)
+	data := []byte(text)
+	writeString, err := file.Write(data)
+	if err != nil {
+		log.Panic(err)
+	}
+	_ = writeString
 }

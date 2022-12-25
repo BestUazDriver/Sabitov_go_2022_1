@@ -7,6 +7,7 @@ import (
 	"log"
 	"path/filepath"
 	"web1/internal/controllers"
+	"web1/internal/core"
 	"web1/internal/repositories/memory"
 	"web1/internal/services"
 )
@@ -41,6 +42,13 @@ func main() {
 	postRepository := memory.NewPostRepository(abs+"\\posts.txt", userRepository)
 	postService := services.NewPostService(postRepository)
 	postHandler := controllers.NewPostHandler(postService)
+
+	post := postService.AddPost(&core.Post{
+		Likes:   234,
+		Owner:   nil,
+		Content: "Why not working",
+	})
+	println(post)
 
 	postHandler.InitPostRoutes(app)
 	userHandler.InitRoutes(app)

@@ -1,5 +1,16 @@
-GET localhost:8080/posts
+GET localhost:8081/posts
 
 ###
 
-GET localhost:8080/users/2
+GET localhost:8081/users/2
+
+###
+
+POST localhost:8081/addPost
+Content-Type: application/json
+
+{
+  "likes": 12,
+  "owner": null,
+  "content": "I like chokolate"
+}
