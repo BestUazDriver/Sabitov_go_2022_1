@@ -1,5 +1,15 @@
-GET localhost:8080/posts
+GET localhost:8082/products
 
 ###
 
-GET localhost:8080/users/2
+GET localhost:8082/products/63a8336b0b3a9d2c7938d3f7
+
+###
+
+POST localhost:8082/products
+Content-Type: application/json
+
+{
+  "name": "table",
+  "description": "unknown"
+}

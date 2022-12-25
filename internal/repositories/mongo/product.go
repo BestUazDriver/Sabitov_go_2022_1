@@ -41,7 +41,7 @@ func (repository *ProductRepository) FindById(ctx context.Context, id string) (*
 
 	product := &core.Product{}
 
-	err = repository.collection.FindOne(ctx, bson.M{"id": objectId}).Decode(product)
+	err = repository.collection.FindOne(ctx, bson.M{"_id": objectId}).Decode(product)
 	if err != nil {
 		return nil, err
 	}
@@ -54,5 +54,6 @@ func (repository *ProductRepository) Save(ctx context.Context, product *core.Pro
 		return nil, err
 	}
 	product.Id = result.InsertedID.(primitive.ObjectID)
+
 	return product, nil
 }

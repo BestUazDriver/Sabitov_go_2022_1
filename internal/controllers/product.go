@@ -24,7 +24,7 @@ func NewProductHandler(service ProductService) *ProductHandler {
 func (handler *ProductHandler) InitRoutes(app *fiber.App) {
 	app.Get("/products", handler.GetAll)
 	app.Get("/products/:productId", handler.GetById)
-	app.Post("/products/:id", handler.AddProduct)
+	app.Post("/products", handler.AddProduct)
 }
 
 func (handler *ProductHandler) GetAll(ctx *fiber.Ctx) error {
