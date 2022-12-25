@@ -1,2 +1,3 @@
-1, 12, 3, i like pizza
-2, 12786, 1, i like beer
+1, 1, 2, why
+2, 3, nil, because
+3, 12313, nil, follow my inst

@@ -64,12 +64,12 @@ func (postRepository *PostRepository) GetAll() []*core.Post {
 }
 
 func (postRepository *PostRepository) AddPost(post *core.Post) {
-	file, err := os.OpenFile(postRepository.path, os.O_RDWR, 0666)
-	println(post.Owner.Name)
+	file, err := os.OpenFile(postRepository.path, os.O_APPEND, 0666)
+	log.Println(post.Content)
 	if err != nil {
 		panic("Problems with os.OpenFile()")
 	}
-	text := strconv.Itoa(post.Id) + ", " + strconv.Itoa(post.Likes) + ", " + strconv.Itoa(post.Owner.Id) + ", " + post.Content
+	text := "\n" + strconv.Itoa(post.Id) + ", " + strconv.Itoa(post.Likes) + ", nil, " + post.Content
 	println(text)
 	data := []byte(text)
 	writeString, err := file.Write(data)

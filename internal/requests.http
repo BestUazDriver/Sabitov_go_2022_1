@@ -10,7 +10,8 @@ POST localhost:8081/addPost
 Content-Type: application/json
 
 {
-  "likes": 12,
+  "id" : 3,
+  "likes": 12313,
   "owner": null,
-  "content": "I like chokolate"
+  "content": "follow my inst"
 }

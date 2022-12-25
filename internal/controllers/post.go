@@ -27,7 +27,7 @@ func (handler *PostHandler) GetPosts(ctx *fiber.Ctx) error {
 }
 
 func (handler *PostHandler) AddPost(ctx *fiber.Ctx) error {
-	post := core.Post{}
+	post := &core.Post{}
 	err := ctx.BodyParser(post)
 	if err != nil {
 		return ctx.Status(http.StatusInternalServerError).JSON(map[string]string{
@@ -36,5 +36,5 @@ func (handler *PostHandler) AddPost(ctx *fiber.Ctx) error {
 	}
 	return ctx.Status(200).
 		JSON(
-			map[string]*core.Post{"post": handler.postService.AddPost(&post)})
+			map[string]*core.Post{"post": handler.postService.AddPost(post)})
 }
